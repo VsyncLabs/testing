@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package executer;
+
+message WasiContext {
+    repeated string args = 1;
+    repeated string envs = 2;
+    bytes wasm_bytes = 3;
+    string func_name = 4;
+    string module_name = 5;
+}
+
+message ExecResult {
+    int32 status = 1;
+}
+
+service DistributedExecuter {
+    rpc run_wasi(WasiContext) returns (ExecResult);
+}

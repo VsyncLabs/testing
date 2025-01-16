@@ -1,0 +1,25 @@
+[package]
+name = "containerd-shim-wasmer"
+version = "0.5.0"
+edition.workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+containerd-shim-wasm = { workspace = true }
+log = { workspace = true }
+tokio = { workspace = true }
+
+wasmer = "5.0.2"
+wasmer-wasix = "0.32"
+mio = { version = "1", features = ["net"] }
+
+[dev-dependencies]
+containerd-shim-wasm = { workspace = true, features = ["testing"] }
+serial_test = { workspace = true }
+
+[[bin]]
+name = "containerd-shim-wasmer-v1"
+path = "src/main.rs"
+
+[package.metadata.cargo-machete]
+ignored = ["mio"] # wasmer depends on mio but the latest version of mio moved features behind a feature flag

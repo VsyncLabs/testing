@@ -1,0 +1,11 @@
+[package]
+name = "containerd-shim-benchmarks"
+version.workspace = true
+edition.workspace = true
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "wasi-demo-app-benchmarks"
+harness = false
