@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y libssl-dev libclang-dev && rm -rf /var/
 WORKDIR /app
 
 # Copy the compiled binary from the builder stage
-COPY --from=builder /app/target/release/grpc-server app
+COPY --from=builder /app/target/release/device2 app
 
 
 # Command to run the application
